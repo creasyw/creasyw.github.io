@@ -3,6 +3,8 @@ layout: post
 title: "Solving Sudoku"
 date: 2015-01-06 16:37
 comments: false
+categories:
+- Programming
 tags:
 - Programming
 - code snippet

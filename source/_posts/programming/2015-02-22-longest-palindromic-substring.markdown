@@ -4,6 +4,8 @@ title: "Longest Palindromic Substring"
 date: 2015-02-19 11:11
 comments: false
 summary: A list of references for understanding/solving this puzzle
+categories:
+- Programming
 tags:
 - Algorithm
 - Programming

@@ -3,9 +3,7 @@ layout: post
 title: "Wired In and Schedule Sequential Workflow"
 date: 2014-09-24 16:43
 comments: true
-categories: 
-- My Life
-- Programming
+categories: Thoughts
 tags:
 - Blahblah
 - Productivity

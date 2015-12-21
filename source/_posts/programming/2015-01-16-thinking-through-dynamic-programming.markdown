@@ -3,6 +3,8 @@ layout: post
 title: "Thinking Through Dynamic Programming"
 date: 2015-01-16 11:11
 comments: false
+categories:
+- Programming
 tags:
 - Programming
 - code snippet

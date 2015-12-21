@@ -3,8 +3,7 @@ layout: post
 title: "Half of Summer Season Has Gone"
 date: 2014-06-23 14:01
 comments: true
-categories: 
-- My Life
+categories: Thoughts
 tags:
 - Tennis
 - Blahblah

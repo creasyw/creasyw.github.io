@@ -3,8 +3,7 @@ layout: post
 title: "Survive on Busy Two weeks"
 date: 2014-04-05 09:47
 comments: true
-categories: 
-- My Life
+categories: Thoughts
 tages:
 - thoughts
 - life

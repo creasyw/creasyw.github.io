@@ -3,8 +3,7 @@ layout: post
 title: "My 2014 and new year resolution"
 date: 2014-12-25 20:17
 comments: false
-categories: 
-- My Life
+categories: Thoughts
 tags:
 - Blahblah
 - Yearly summary
