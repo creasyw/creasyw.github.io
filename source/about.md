@@ -40,11 +40,3 @@ I'm very fortunate to work with some of the most smartest people in the world, d
     }
     //-->
     </script><noscript>...(Sorry, you need Javascript on to email me)</noscript>.
-
-<section id="links">
-  You can find me on
-  <a href="http://www.twitter.com/michaeldwan">Twitter</a>,
-  <a href="http://www.github.com/michaeldwan">GitHub</a>,
-  <a href="http://instagram.com/michaeldwan">Instagram</a>,
-  and <a href="http://www.facebook.com/michaeldwan">Facebook</a>.
-</section>

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign minutes = content | strip_html | number_of_words | divided_by: 180 %}
+{% assign minutes = content | strip_html | number_of_words | divided_by: 120 %}
 {% if minutes == 0 %}
 {% assign minutes = 1 %}
 {% endif %}
@@ -28,10 +28,6 @@ layout: default
 
 {% if site.show_sharing_icons %}
   {% include share_buttons.html %}
-{% endif %}
-
-{% if site.show_post_footers %}
-  {% include post_footer.html %}
 {% endif %}
 
 {% if site.disqus_shortname %}
