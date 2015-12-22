@@ -6,7 +6,7 @@ layout: default
    {% for category in sortedcats %}
         <div class="catbloc" id="{{ category | first | remove:' ' }}">
             <hr class="large title">
-            <h2>{{ category | first }}</h2>
+            <h2>{{ category | first | upcase}}</h2>
 
             <ul class="index">
               {% for posts in category %}
