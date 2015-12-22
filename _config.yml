@@ -8,6 +8,7 @@ description: "This website is developed by Qiong Wu and built atop of Jekyll."
 baseurl:     ""
 url:         "http://wqiong.com"
 date_format: "%b %-d, %Y"
+safe: false
 
 # Google services
 google_analytics:
@@ -31,12 +32,12 @@ facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
-github_username:
+github_username: creasyw
 bitbucket_username:
 stackoverflow_id:
-twitter_username:
+twitter_username: creasywuqiong
 google_plus_id:
-linkedin_username:
+linkedin_username: creasywuqiong
 angellist_username:
 medium_id:
 bitcoin_url:
@@ -58,12 +59,14 @@ share_stumbleupon: false
 share_hackernews: false
 
 # Build settings
+gems:
+  - jekyll-paginate
+
 markdown:     kramdown
+
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
 paginate:     4
 sass:
   compressed: true
-gems:
-  - jekyll-paginate

@@ -19,13 +19,13 @@ But they do have the same train of thought if we start solving from the recursiv
 
 Take Fibonacci number as example. We have to know the number with index N-1 and N-2 so that we can derive the number of index N. The recursive solution is
 
-{% highlight python lineanchors %}
+{% highlight python %}
 fib = lambda n: fib(n-1)+fib(n-2) if n > 2 else 1
 {% endhighlight %}
 
 That is, for every problem, there should be two sub-problems solved before tackling it. Furthermore, the edge cases are with index 0 and 1. So, the dynamic programming version of the solution becomes:
 
-{% highlight python lineanchors %}
+{% highlight python %}
 def fib(n):
     a = 0
     b = 1
@@ -36,7 +36,7 @@ def fib(n):
 
 On the other hand, the minimum distance between two strings are just "slightly" difficult. It has four cases for two given indices of the two strings: the characters are the same, so the distance is 0; one of the character needs to be deleted; one of the indices needs to insert a new character; both characters need to be replaced. The last three cases will have distance 1. Although it is a little bit obscure coming up with the 2D matrix DP solution, it is easy to write the recursive version:
 
-{% highlight python lineanchors %}
+{% highlight python %}
 def minDistance(self, word1, word2):
         def helper(pt1, pt2):
             if pt1 < 0:
@@ -63,7 +63,7 @@ Then, according to the recursive solution, if the two characters are different, 
 
 Till this step, the dp solution is complete and functioned. But further improvement can be made in the space complexity. Because each slot only needs three neighbors to make the decision, we can either go by row or go by column. Suppose the two input strings have length M and N. The final version has time complexity of O(MN) and space of O(min(M,N)).
 
-{% highlight python lineanchors %}
+{% highlight python %}
 def minDistance(self, word1, word2):
         if min(len(word1), len(word2)) == 0:
             return max(len(word1), len(word2))

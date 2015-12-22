@@ -15,7 +15,7 @@ Sudoku is one of my long-time favorite game for killing time in a flight or idly
 
 The original thought of solving it comes from the [Algorithm Design Manual](http://www.algorist.com) and its [wiki page](http://en.wikipedia.org/wiki/Sudoku_solving_algorithms). However, the backtracking algorithm provided in both places are somewhat obscure. Specifically for the backtracking solution, the algorithm is:
 
-{% highlight python lineanchors %}
+{% highlight python %}
 def backtracking(board, x, y):
     if finished(x, y):
         return board
@@ -41,7 +41,7 @@ Each iteration of backtracking possesses its own information of both board and t
 Concerning the data types, it is tempting to use heap for the empty slots since the program is only interest in the slot with lest candidates. But since the constraints also needs to update in every iteration, and there are only 60+ empty slots at most. It is good enough to use a dictionary with coordinates as key and the candidates as values.
 
 The two major functions are the Constraint Propagation:
-{% highlight python lineanchors %}
+{% highlight python %}
 def eliminate(choices, val, i, j):
     result = {}
     # deep copy
@@ -63,7 +63,7 @@ def eliminate(choices, val, i, j):
     return result
 {% endhighlight %}
 , and the optimized main function:
-{% highlight python lineanchors %}
+{% highlight python %}
 def solve_opt(board, choices):
     if len(choices) == 0:
         return board
