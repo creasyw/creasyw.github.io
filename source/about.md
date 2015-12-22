@@ -11,11 +11,7 @@ I'm very fortunate to work with some of the most smartest people in the world, d
 
   I am a geek. When I get into a hobby, I <a href="http://wqiong.com/tags.html#Tennis">focus on it completely</a>; I learn all the rules and vocabulary so that I can have an in-depth conversation with an expert. Besides, I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; love to play video games, and to browse <a href="http://www.reddit.com/">Reddit</a> and <a href="https://news.ycombinator.com/news">Hacker News</a>.
 
-  Occasionally, I write about my thoughts and daily life <a href="blog.html">in the blog</a>. You can also find me on
-  <a href="http://www.github.com/creasyw">GitHub</a>,
-  <a href="http://www.twitter.com/creasywuqiong">Twitter</a>,
-  <a href="http://instagram.com/kelisier">Instagram</a>,
-  or <a href="http://www.facebook.com/creasy.wu.98">Facebook</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
+  You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, <a href="http://instagram.com/kelisier">Instagram</a>, and <a href="http://www.facebook.com/creasy.wu.98">Facebook</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
     <script type="text/javascript" language="javascript">
     <!--
     // Email obfuscator script 2.1 by Tim Williams, University of Arizona
