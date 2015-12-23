@@ -3,6 +3,7 @@ layout: post
 title: "How Safe is Your Job?"
 date: 2015-02-19 11:11
 comments: false
+categories: Digest
 tags:
 - thoughts
 - Blahblah
