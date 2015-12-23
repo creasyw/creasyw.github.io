@@ -5,6 +5,7 @@ import subprocess
 keywords = {"<div class=\'post\'>": "",
             "<br/>": "\n",
             "<br />": "\n",
+            "&nbsp;": "";
             "</div>": ""}
 
 
