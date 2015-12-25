@@ -4,7 +4,7 @@ email:       qiongwu@utexas.edu
 author:      Qiong Wu
 source: source
 destination: build
-description: "This website is developed by Qiong Wu and built atop of Jekyll."
+description: "The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player."
 baseurl:     ""
 url:         "http://wqiong.com"
 date_format: "%b %-d, %Y"
