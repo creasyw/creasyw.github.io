@@ -11,6 +11,7 @@ h2,
 h3,
 h4,
 h5,
+ah,
 h6 {
   font-family: $heading-font-family;
   font-weight: $heading-font-weight;
@@ -68,6 +69,12 @@ blockquote p {
 h1,
 .h1 {
   font-size: $h1;
+}
+
+ah,
+.h2 {
+  font-size: $h2;
+  display: inline-block;
 }
 
 h2,

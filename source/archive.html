@@ -14,9 +14,9 @@ layout: default
                 {% if post.url %}
                 <li>
                     <a href="{{ post.url }}">
-                    <h2>{{ post.title | replace: '<br>', '' }} {% if post.link %}<span class="oi" data-glyph="external-link" style="color:#888; font-size:50%;"></span>{% endif %}</h2>
+                    <ah>{{ post.title | replace: '<br>', '' }} {% if post.link %}<span class="oi" data-glyph="external-link" style="color:#888; font-size:50%;"></span>{% endif %}</ah>
+                    </a> &nbsp&nbsp
                     <time class="top" datetime='{{ post.date | date: "%Y-%m-%d" }}'>{{ post.date | date: "%-d %B %Y" }}</time>
-                    </a>
                 </li>
                 {% endif %}
                 {% endfor %}
