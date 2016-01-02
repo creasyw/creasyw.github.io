@@ -10,7 +10,7 @@
   h2 {
     @include sans;
     font-weight: 900;
-    font-size: 1.75rem;
+    font-size: 1.9rem;
     letter-spacing: -.05rem;
     margin: 0;
   }
@@ -31,7 +31,7 @@
 
   .header-name {
     @include sans;
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
     text-align: center;
     letter-spacing: -.15rem;
@@ -126,17 +126,22 @@
 
   .resume-item-title {
     @include sans_bold;
-    margin: 0 0 .75rem;
-    font-size: 1.5rem;
+    margin: 0 0 .4rem;
+    font-size: 1.8rem;
     letter-spacing: -.05rem;
     line-height: 1;
   }
 
   .resume-item-details {
-    font-size: 1.125rem;
-    margin: 0 0 .75rem;
-    line-height: 1;
+    font-size: 1.3rem;
+    margin: 0 0 .35rem;
+    line-height: 1.2;
   }
+
+  .resume-item-list {
+    margin-top: 0rem;
+    font-size: 1.25rem;
+   }
 
   .resume-item-title,
   .resume-item-details,
