@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Tennis Progress of the Past Three Months"
-date:       2016-02-07
+date:       2016-06-08
 summary:    I still have plenty of double faults and unforced errors, but I'm becomming better, faster, and stronger.
 categories: Tennis
 ---
