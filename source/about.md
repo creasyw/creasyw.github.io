@@ -11,7 +11,7 @@ I'm very fortunate to work with some of the most smartest people, building the W
 
 I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star War, though like both franchises more than any other movies; love to play tennis and video games; and enjoy browsing <a href="https://www.reddit.com/r/programming/">Reddit</a> and <a href="https://news.ycombinator.com/news">Hacker News</a>.
 
-  You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, <a href="http://instagram.com/kelisier">Instagram</a>, and <a href="http://www.facebook.com/creasy.wu.98">Facebook</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
+  You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, and <a href="https://www.linkedin.com/in/qiongw">Linkedin</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
     <script type="text/javascript" language="javascript">
     <!--
     // Email obfuscator script 2.1 by Tim Williams, University of Arizona
