@@ -21,7 +21,7 @@ I was hoping to find something like [Python Progression Path](http://stackoverfl
 
 I will sort the contents here as incremental records simulating my Emacs learning process, as well as keeping track of nontrivial materials and thoughts.
 
-### References:
+### References
 
 * These two great post are the starting point to enter the
   world of Emacs [1](http://sachachua.com/blog/2013/05/how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners/), [2](http://sachachua.com/p/26006).
@@ -40,23 +40,25 @@ I will sort the contents here as incremental records simulating my Emacs learnin
 * [From Vim to Emacs+Evil chaotic migration guide](http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/)
 
 
-### Packages:
+### Packages
 
 - [Prelude](http://batsov.com/prelude/) -- very easy to setup, and
   add/disable modules and/or modes, which are defined at
-  [`init.el`](https://github.com/creasyw/dot_file/blob/master/init.el)
+  [init.el](https://github.com/creasyw/dot_file/blob/master/init.el)
   and [prelude-modules.el](https://github.com/creasyw/dot_file/blob/master/prelude-modules.el).
-- [Evil](https://www.emacswiki.org/emacs/Evil), the Vim mode. This
-  would make the live much easier, maybe just because it provides a decent editor inside of
-  the emacs OS =P. And there is a trick to
+- [Evil](https://www.emacswiki.org/emacs/Evil), the Vim mode. This makes my live much easier, maybe just because it provides a decent editor inside of
+  the emacs OS =P. And, there is a trick to
   [copy and paste large chunks of text in OSX](http://stackoverflow.com/questions/3960034/pasting-text-into-emacs-on-macintosh).
 - [Oh-my-emacs](https://github.com/xiaohanyu/oh-my-emacs) is an
-  alternative of Prelude to start with, but I met quite a few incompatible issues for the mac os. [Emacs24 Starter Kit](https://github.com/eschulte/emacs24-starter-kit) is also well-known but relatively inactive recently.
+  alternative of Prelude to start with, but I met quite a few
+  incompatible issues for the mac
+  os. [Emacs24 Starter Kit](https://github.com/eschulte/emacs24-starter-kit)
+  is also well-known but not actively developed recently.
 - [Magit](https://github.com/magit/magit). "Magit is the most popular interface to git. If you are new to git and do not need support for other vcs this is likely the package you should try first" -- quoted from [EmacsWiki](http://www.emacswiki.org/emacs/Git). The detail explanation can be found from [Mastering Emacs](http://www.masteringemacs.org/articles/2013/12/06/introduction-magit-emacs-mode-git/).
 - Auto-completion is `M-/`, or
   [Company](http://company-mode.github.io/) for fancier scenarios.
 - [HighlightSymbol](http://www.emacswiki.org/emacs/HighlightSymbol)
-    with self-explanatory name, but currently it does not work well within
+    with self-explanatory name, but does not work well within
     Prelude.
 - [Haskell mode](http://haskell.github.io/haskell-mode/)
 
