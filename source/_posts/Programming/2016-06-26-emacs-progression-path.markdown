@@ -13,9 +13,9 @@ tags:
 
 ---
 
-[_Update_] This is a post I wrote two years ago. Since then, I have
+[_Update_] This post was originally wrote two years ago. Since then, I have
 gradually moved most of my _personal_ developing environment from Vim
-to Emacs. So, it is the time to rewrite part of the post and add the updates.
+to Emacs. It is the time to rewrite part of it and add the updates.
 
 I was hoping to find something like [Python Progression Path](http://stackoverflow.com/questions/2573135/python-progression-path-from-apprentice-to-guru) or sort of "best practice" for Emacs, because the difference between Vim and Emacs was much larger than I thought. But what I found were either teaching about basic operations such as saving and quiting the editor for people who had access to comupter for the 1st time, or talking about tricks of using Emacs Lisp for the high-end hard-core players... It seemed like I was stuck in the middle, and would stay there for a very long time...
 
