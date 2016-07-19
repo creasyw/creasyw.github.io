@@ -7,7 +7,7 @@ Hello! My name is Qiong.
 
 First and foremost, I am a programmer. I’m passionate about programming and spend a considerable amount of time doing it: writing Python and C at work; playing with Racket, Haskell, Julia, and Javascript in my spare time.
 
-I'm very fortunate to work with some of the most smartest people, building the WiFi operation system at <a href="https://www.eero.com">eero</a>. Before this, I had Ph.D degree in wireless communications, and M.S. in audio signal processing. I love mathematics, and enjoy reading research papers, mainly about statistical signal processing and information theory.
+I'm very fortunate to work with some of the smartest people, building the WiFi operation system at <a href="https://www.eero.com">eero</a>. Before this, I had Ph.D degree in wireless communications, and M.S. in audio signal processing. I love mathematics, and enjoy reading research papers, mainly about statistical signal processing and information theory.
 
 I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star War, though like both franchises more than any other movies; love to play tennis and video games; and enjoy browsing <a href="https://www.reddit.com/r/programming/">Reddit</a> and <a href="https://news.ycombinator.com/news">Hacker News</a>.
 
