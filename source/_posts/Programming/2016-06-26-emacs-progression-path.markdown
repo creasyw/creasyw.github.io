@@ -64,6 +64,7 @@ I will sort the contents here as incremental records simulating my Emacs learnin
   alternative, but I met quite a few
   incompatible issues for the OSX. [Emacs24 Starter Kit](https://github.com/eschulte/emacs24-starter-kit)
   is also well-known but not actively developed recently.
+- Emacs is able to do [spelling check](https://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html) natively, or with more advanced [Fly Spell](https://www.emacswiki.org/emacs/FlySpell).
 - [Evil](https://www.emacswiki.org/emacs/Evil), the Vim mode. This makes my live much easier, maybe just because it provides a decent editor inside of
   the emacs OS =P. And, there is a trick to
   [copy and paste large chunks of text in OSX](http://stackoverflow.com/questions/3960034/pasting-text-into-emacs-on-macintosh).
@@ -75,7 +76,10 @@ I will sort the contents here as incremental records simulating my Emacs learnin
 - [HighlightSymbol](http://www.emacswiki.org/emacs/HighlightSymbol)
     with self-explanatory name, but does not work well within
     Prelude.
-- [Haskell mode](http://haskell.github.io/haskell-mode/)
+- [Haskell mode](http://haskell.github.io/haskell-mode/).
+- [Markdown mode](http://jblevins.org/projects/markdown-mode/).
+- [Geisier](http://www.nongnu.org/geiser/geiser_3.html) is able to integrate with Racket REPL, and use together with [Quack](http://www.neilvandyke.org/quack/).
+- Alternatively, there is a [Racket mode](https://github.com/greghendershott/racket-mode).
 
 ### References
 
@@ -86,8 +90,7 @@ I will sort the contents here as incremental records simulating my Emacs learnin
     - Emacs: ([compact version](http://refcards.com/docs/gildeas/gnu-emacs/emacs-refcard-a4.pdf), and [a more user friendly verion](http://cs.iupui.edu/~kweimer/EmacsCheatSheet.pdf)).
     - [Prelude](http://g-design.net/textmate.pdf)
     - [Magit](https://magit.vc/manual/magit-refcard.pdf)
-    - [Geiser](http://www.nongnu.org/geiser/geiser_5.html) mostly for
-      the Haskell mode
+    - [Geiser](http://www.nongnu.org/geiser/geiser_5.html) 
 * GNU [Emacs Manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html) and [Emacs LISP Manual](http://www.gnu.org/software/emacs/manual/html_node/elisp/)
 * [Guidelines](http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/) for package management in Emacs.
 * [Emacs Wiki](http://www.emacswiki.org/emacs/)
@@ -95,18 +98,11 @@ I will sort the contents here as incremental records simulating my Emacs learnin
 * [From Vim to Emacs+Evil chaotic migration guide](http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/)
 * Steve Yegge's suggestion for [improving productivity with Emacs](https://sites.google.com/site/steveyegge2/effective-emacs)
 * My previous [post](http://wqiong.com/blog/2013/07/01/setup-emacs-in-mac-os/) to setup Emacs in Mac OS.
+* [How to turn Emacs to the ultimate Latex Editor](https://piotrkazmierczak.com/2010/emacs-as-the-ultimate-latex-editor/)
 
 ### Misc
 
-The difference between "killing" and "deleting" is that "killed" text
-can be reinserted (at any position), whereas "deleted" things cannot
-be reinserted in this way (you can, however, undo a deletion--see below).
-Reinsertion of killed text is called "yanking".  Generally, the
-commands that can remove a lot of text kill the text (they are set up so
-that you can yank the text), while the commands that remove just one
-character, or only remove blank lines and spaces, do deletion (so you
-cannot yank that text).  \<DEL\> and C-d do deletion in the simplest
-case, with no argument.  When given an argument, they kill instead.
+The difference between "killing" and "deleting" is that "killed" text can be reinserted (at any position), whereas "deleted" things cannot be reinserted in this way (you can, however, undo a deletion--see below).  Reinsertion of killed text is called "yanking".  Generally, the commands that can remove a lot of text kill the text (they are set up so that you can yank the text), while the commands that remove just one character, or only remove blank lines and spaces, do deletion (so you cannot yank that text).  \<DEL\> and C-d do deletion in the simplest case, with no argument.  When given an argument, they kill instead.
 -- This is valid for both vim and emacs.
 
 - Multiple windows:
