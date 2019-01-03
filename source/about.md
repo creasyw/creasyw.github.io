@@ -7,7 +7,7 @@ Hello! My name is Qiong.
 
 First and foremost, I am a programmer. I’m passionate about programming and spend a considerable amount of time doing it - currently writing in Python and Go at work, and playing with Racket and Haskell in my spare time.
 
-I'm working as a system software engineer at <a href="https://eero.com/our-story">eero</a> to build THE WiFi mesh system. Before this, I had a Ph.D. degree in wireless communications and M.S. in audio signal processing. I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star Wars; enjoy reading and love coffee and tennis.
+I'm working as a system software engineer at <a href="https://eero.com/our-story">eero</a> to build THE WiFi mesh system. Before this, I had a Ph.D. degree in wireless communications and M.S. in audio signal processing. I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star Wars; enjoy reading and Talisker; and love coffee and tennis.
 
 You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, and <a href="https://www.linkedin.com/in/qiongw">Linkedin</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
     <script type="text/javascript" language="javascript">
