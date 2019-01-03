@@ -5,13 +5,11 @@ permalink: /about/
 
 Hello! My name is Qiong.
 
-First and foremost, I am a programmer. I’m passionate about programming and spend a considerable amount of time doing it: writing Python and C at work; playing with Racket, Haskell, Julia, and Javascript in my spare time.
+First and foremost, I am a programmer. I’m passionate about programming and spend a considerable amount of time doing it - currently writing in Python and Go at work, and playing with Racket and Haskell in my spare time.
 
-I'm very fortunate to work with some of the smartest people, building the WiFi mesh system at <a href="https://eero.com/our-story">eero</a>. Before this, I had Ph.D degree in wireless communications, and M.S. in audio signal processing. I love mathematics, and enjoy reading research papers, mainly about statistical signal processing and information theory.
+I'm working as a system software engineer at <a href="https://eero.com/our-story">eero</a> to build THE WiFi mesh system. Before this, I had a Ph.D. degree in wireless communications and M.S. in audio signal processing. I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star Wars; enjoy reading and love coffee and tennis.
 
-I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star War, though like both franchises more than any other movies; love to play tennis and video games; and enjoy browsing <a href="https://www.reddit.com/r/programming/">Reddit</a> and <a href="https://news.ycombinator.com/news">Hacker News</a>.
-
-  You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, and <a href="https://www.linkedin.com/in/qiongw">Linkedin</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
+You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, and <a href="https://www.linkedin.com/in/qiongw">Linkedin</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
     <script type="text/javascript" language="javascript">
     <!--
     // Email obfuscator script 2.1 by Tim Williams, University of Arizona
