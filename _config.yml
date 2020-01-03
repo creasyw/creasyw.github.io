@@ -59,7 +59,7 @@ share_stumbleupon: false
 share_hackernews: false
 
 # Build settings
-gems:
+plugins:
   - jekyll-paginate
 
 markdown:     kramdown
