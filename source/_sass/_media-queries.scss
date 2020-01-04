@@ -32,7 +32,10 @@
 
   blockquote {
     margin-left: $space-3;
-    padding: $space-3;
+    padding-left: $space-3;
+    padding-right: $space-3;
+    padding-up: 0;
+    padding-down: 0;
   }
 
   .social-icons-left {
