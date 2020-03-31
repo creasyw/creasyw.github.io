@@ -5,7 +5,7 @@ permalink: /about/
 
 Hello! My name is Qiong.
 
-I am a professional maker of software and working on system engineering R&D at <a href="https://eero.com/our-story">eero</a> to build THE WiFi mesh system. Before this, I had a Ph.D. degree in wireless communications and M.S. in audio signal processing. I'm passionate about programming and spend a considerable amount of time doing it - currently writing in Python and Go at work, and tinkering Lisp and Haskell in my spare time. Besides, I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star Wars; enjoy reading and Talisker; and love coffee and tennis.
+I am a professional maker of software and working on the embedded mesh system at <a href="https://eero.com/our-story">eero</a>. Before this, I had a Ph.D. degree in wireless communications and M.S. in audio signal processing. I'm passionate about programming and spend a considerable amount of time doing it - currently writing in Python and Go at work, and tinkering Lisp and Haskell in my spare time. Besides, I am a fan of <a href="http://www.texassports.com/index.aspx?path=football">Longhorn Football</a> and <a href="http://novakdjokovic.com/en/">Novak Djokovic</a>; prefer Star Trek to Star Wars; enjoy reading and Talisker; and love coffee and tennis.
 
 You can find me on <a href="http://www.github.com/creasyw">GitHub</a>, <a href="http://www.twitter.com/creasywuqiong">Twitter</a>, and <a href="https://www.linkedin.com/in/qiongw">Linkedin</a>. Feel free to <a href="{{ site.baseurl }}/contact/">drop me a line</a> and I am happy to correspond
     <script type="text/javascript" language="javascript">
