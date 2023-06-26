@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LTE reading excerpt &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Digest">
+    <link rel="canonical" href="http://localhost:4000/digest/2013/10/09/lte-reading-excerpt/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LTE reading excerpt">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/digest/2013/10/09/lte-reading-excerpt/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="LTE reading excerpt" />
+    <meta name="twitter:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player." />
+    <meta name="twitter:url" content="http://localhost:4000/digest/2013/10/09/lte-reading-excerpt/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>LTE reading excerpt</h1>
+  <span class="post-meta">Oct 9, 2013</span><br>
+  
+  <span class="post-meta small">
+  
+    7 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>The LTE-Advanced introduced by LTE standard release 10 has many new features, including the carrier aggregation, enhanced intercell interferernce coordination (ICIC) for heterogeneous networks (HetNets), enhanced multiple-antenna transmission supporting up to eight downlink layers, and relaying and coordinated multipoint (CoMP) transmission.</p>
+
+<p>For the carrier aggregation, in order to fully compliant with the IMT-Advanced requirements, the radio-access technology in LTE-Advanced does not only provide entensive support for deployment in spectrum allocations with bandwides ranging from 1 MHz to 20 MHz for backwards compatibility, but also extends by means of carrier aggregation, where multiple component carriers are aggregated and jointly used for transmission to/from a signle terminal. Up to five component carriers, possibly each of different bandwidth, can be aggregated, allowing for transmission bandwidth up to 100 MHz. The component carriers that a UE needs to support are determined through a UE-specific configuration process and a dynamic activation and deactivation process. Due to this activation/deactivation process, the state of SCells can be changed frequently. As a result, <strong>radio link monitoring is only supported in the PCell but not in SCells to avoid complex UE behavior and additional control signaling overhead. Despite this kind of effort, the increased complexity due to physical downlink control channel (PDCCH) decoding and timing tracking of multiple component carriers cannot be avoided</strong>.</p>
+
+<p>The receiver RF filter design depends on the type of carrier aggregation. For the interest of low hardware complexity, a singular RF chain is preferable. But it requires an analog-to-digital converter and RF filter with larger bandwidth. Moreover, due to activation and deactivation of component carriers, there is a retuning issue when a single RF is used for these component carriers. <strong>There should be techniques balancing the packet loss due to RF retuning and the measurement of deactivated SCells to achieve optimal network performance</strong>.</p>
+
+<p>A HetNet consists of low-power picocells and femtocells in addition to high-power macrocells to improve end-users QoS. But this benefit comes at the cost of additional intercell interference between heterogeneous cells, and some of the femtocells might be closed subscriber group, which make the strongest downlink power at the viewpoint of certain UE be the interference. Besides, the commeon reference signal (CRS), synchronization signals, and physical broadcast channel (PBCH) are transmitted in almost blank subframe (ABS), which cause the collision among different Scells. **The interference cancellation should developed based on the release 8/9 which soly considers the macrocell interference management through ABS.</p>
+
+<p>The LTE-Advanced system should fulfill the ITU requirements of the downlink peak spectral efficiency of 30 b/s/Hz. The peak spectral efficiency is the highest achievable data rate per overall cell bandwidth assuming error-free conditions when all available radio resources for the corresponding link direction are assigned to a single UE unit. While two- or four-layer transmission would be more prevalent even for the LTE-Advanced system, the required downlink peak spectral efficiency can only be attained using high-order antenna configurations (i.e., 8 × 8). <strong>The main challenge of high-order multiple-input multiple-output (MIMO) is computational complexity</strong>. Maximum likelihood (ML) detection is optimal in the sense that it minimizes error probability when the distributions of all data are equally likely. However, due to its high complexity in 8×8 MIMO systems with high modulation order, a direct implementation of ML detection might not be a viable option for such MIMO systems.</p>
+
+<p>The alternatives are zero-forcing (ZF) and minimum mean square error (MMSE) detection, but both of them are much worse in performance compared with ML. The k-best detection is another choice, but although its performance is close to ML, its computational complexity is still high to be implemented in the real-world multi-antennas configurations.</p>
+
+<p>In the UE, channel estimation is for feeding back channel state information (CSI) to the base station and equalization of the downlink channel in the process of data demodulation. One of the requirements for LTE-Advanced is that it should support up to eight-layer transmission, which implies that there need to be at least eight transmit antenna ports. Toward this, a key change in the reference signal design philosophy from LTE Release 8 is the separation of the demodulation reference signals (DM-RS) from the channel state information reference signals (CSI-RS) in Release 10. The up-side is saving significant reference signal overhead since it allows the densely populated DM-RS to be UE-specific. The down-side is that in order to provide for eight CSI-RS patterns, the density of CSI-RS in LTE-Advanced is significantly less than that of CRS, that is, there is only one CSI-RS resource element (RE) per RB per antenna port. Besides, CSI-RS is expected to be transmitted only once every five or ten sub-frames. <strong>Advanced algorithms are needed for CSI-RS-based channel estimation and computation of the CSI feedback parameters such as CQI (i.e., modulation and coding rate) because existing methods may incur throughput degradation and/or result in a failure to meet the target BLER requirements.</strong> Possible strategies to improve the CSI-RS channel estimation performance could include exploitation of the time-frequency correlations, the channel’s power delay profile (PDP) and the Doppler shift.</p>
+
+<p>[1] S. Parkvall, A. Furuskär, and E. Dahlman, “Evolution of LTE Toward IMT-Advanced,” <em>IEEE Commun. Mag.</em>, vol. 49, no. 2, pp. 84-91, Feb, 2011.<br />
+[2] D. Bai, C. Park, J. Lee, and H. Nguyen, “LTE-advanced modem design: challenges and perspectives,” <em>IEEE Commun. Mag.</em>, vol. 50, no. 2, pp. 178-186, Feb. 2012.<br />
+[3] E. Dahlman, S. Parkvall, and J. Sköld, <em>4G LTE/LTE-Advanced for Mobile Broadband</em>, Academic Press, 2011.<br />
+[4] Z. Guo and P. Nilsson, “Algorithm and Implementation of the K-Best Sphere Decoding for MIMO Detection,” <em>IEEE JSAC</em>, vol. 24, no. 3, Mar. 2006, pp. 491–503.<br />
+[5] M. Baker, <a href="http://www.3gpp.org/ftp/workshop/2009-12-17_ITU-R_IMT-Adv_eval/docs/pdf/REV-090003-r1.pdf">LTE Advanced Physical Layer</a>. <br />
+[6] J. Wannstrom, <a href="http://www.3gpp.org/IMG/pdf/lte_advanced_v2.pdf">Introduction to LTE-Advanced</a>.</p>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

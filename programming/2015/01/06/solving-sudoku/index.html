@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Solving Sudoku &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2015/01/06/solving-sudoku/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Solving Sudoku">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2015/01/06/solving-sudoku/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="Solving Sudoku" />
+    <meta name="twitter:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player." />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2015/01/06/solving-sudoku/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Solving Sudoku</h1>
+  <span class="post-meta">Jan 6, 2015</span><br>
+  
+  <span class="post-meta small">
+  
+    4 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>Sudoku is one of my long-time favorite game for killing time in a flight or idly waiting something. It tests memory and deduction. More importantly, it is fun to play.</p>
+
+<p>The original thought of solving it comes from the <a href="http://www.algorist.com">Algorithm Design Manual</a> and its <a href="http://en.wikipedia.org/wiki/Sudoku_solving_algorithms">wiki page</a>. However, the backtracking algorithm provided in both places are somewhat obscure. Specifically for the backtracking solution, the algorithm is:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">backtracking</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">finished</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">board</span>
+    <span class="k">elif</span> <span class="n">board</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">backtracking</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">local_copy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">every</span> <span class="n">possible</span> <span class="n">value</span><span class="p">:</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">backtracking</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="n">reset</span> <span class="n">to</span> <span class="n">empty</span></code></pre></figure>
+
+<p>By exploring every possible solution, it actually performs a depth-first search. But as a typical backtracking implementation, a proper pruning has a greater impact on search time than any other factor. Specifically, a pruning strategy requires carefully ordering the evaluations of the pieces. In this implementation, it means that the algorithm needs to decide evaluating which empty slot. Obviously, in a given stage, evaluating a slot with only three candidates takes only 1/3 search spacing comparing with a slot with nine candidates.</p>
+
+<p>I use the basic rules of Sudoku to eliminate candidates:</p>
+
+<ol>
+  <li>If a square has only one possible value, then eliminate that value from the square’s peers (same line, same column, and same zone).</li>
+  <li>If a unit has only one possible place for a value, then put the value there.</li>
+</ol>
+
+<p>Each iteration of backtracking possesses its own information of both board and the available candidates for each currently empty slot. The algorithm only explore the slot with lest candidates, and whenever an empty slot is assigned a value, both information will be updated. This process is called <em>variables ordering</em> by <a href="http://norvig.com/sudoku.html">Constraint Propagation</a>.</p>
+
+<p>Concerning the data types, it is tempting to use heap for the empty slots since the program is only interest in the slot with lest candidates. But since the constraints also needs to update in every iteration, and there are only 60+ empty slots at most. It is good enough to use a dictionary with coordinates as key and the candidates as values.</p>
+
+<p>The two major functions are the Constraint Propagation:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">eliminate</span><span class="p">(</span><span class="n">choices</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># deep copy
+</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">choices</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
+    <span class="k">del</span> <span class="n">result</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="c1"># propagate in the same row
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">m</span><span class="p">)]:</span>
+            <span class="n">result</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">m</span><span class="p">)].</span><span class="n">remove</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="c1"># propagate in the same col
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[(</span><span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">)]:</span>
+            <span class="n">result</span><span class="p">[(</span><span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">)].</span><span class="n">remove</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="c1"># propagate in the same zone
+</span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">j</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">3</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="ow">in</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]:</span>
+                <span class="n">result</span><span class="p">[(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)].</span><span class="n">remove</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></code></pre></figure>
+
+<p>, and the optimized main function:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">solve_opt</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">board</span>
+
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">choices</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">choices</span><span class="p">[</span><span class="n">k</span><span class="p">])))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">choices</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]:</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">temp_choices</span> <span class="o">=</span> <span class="n">eliminate</span><span class="p">(</span><span class="n">choices</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">solve_opt</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">temp_choices</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></code></pre></figure>
+
+<p>The complete program can be found <a href="https://gist.github.com/creasyw/79648574056bdc881c2f">here</a>.</p>
+
+<p>It is nice to see the hardest puzzle solved in a second:) And how simple the original algorithm is for a seemly complicated problem.</p>
+
+<p>cheers:)</p>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

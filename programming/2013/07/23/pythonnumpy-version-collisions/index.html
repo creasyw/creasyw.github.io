@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Python/Numpy version collisions &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2013/07/23/pythonnumpy-version-collisions/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python/Numpy version collisions">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2013/07/23/pythonnumpy-version-collisions/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="Python/Numpy version collisions" />
+    <meta name="twitter:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player." />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2013/07/23/pythonnumpy-version-collisions/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Python/Numpy version collisions</h1>
+  <span class="post-meta">Jul 23, 2013</span><br>
+  
+  <span class="post-meta small">
+  
+    1 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>Before this accident, I did not even know there were so many places relevant with a single program… I opened the pandora’s box beginning with using <code>brew doctor</code>  which told me to move directory /usr/local/bin/ prior to /usr/bin/ so that all the homebrewed packages could be found automatically. After I did this, if I executed matplotlib, I would have this runtime error <code>RuntimeError: module compiled against API version 8 but this version of numpy is 6</code> which was somewhat correct by the way. Because I used superpack installed the latest version of numpy(1.8), scipy(0.13), and matplotlib(1.4), but if I printed out the “numpy.<strong>version</strong>” in a script, it showed 1.6.1.</p>
+
+<ol>
+  <li>delete all of the outdated versions of numpy</li>
+  <li>make sure I explicitly add PYTHONPATH in the bash_profile.</li>
+  <li>I even uninstalled and reinstalled the numpy</li>
+</ol>
+
+<p>But the problem was still there.</p>
+
+<p>After an exhausted search, I found that numpy-1.6.1 in “/System/Library/Frameworks/Python.framework/Versions/2.6/Extras/lib/python/” WTF! I still don’t know why it search into 2.6 given there is another 2.7 in the same level of directory. Deleting both 2.6 and 2.7 directories (only delete the 2.6 could not work either…) finally solved the problem. ahooooo….</p>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

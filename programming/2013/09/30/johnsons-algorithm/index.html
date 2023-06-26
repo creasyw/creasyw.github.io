@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All-pairs shortest path &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An algorithmic analysis for the problem of all-pairs shortest path">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2013/09/30/johnsons-algorithm/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="All-pairs shortest path">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2013/09/30/johnsons-algorithm/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="All-pairs shortest path" />
+    <meta name="twitter:description" content="An algorithmic analysis for the problem of all-pairs shortest path" />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2013/09/30/johnsons-algorithm/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>All-pairs shortest path</h1>
+  <span class="post-meta">Sep 30, 2013</span><br>
+  
+  <span class="post-meta small">
+  
+    8 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>The question comes from the online course <em>Algorithm Design and Analysis (Part II)</em> in coursera. It is an <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths">all-pairs shortest path problem</a>. As mentioned in the wikipedia, a more straightforward solution with Floyd–Warshall algorithm takes \(O(N^3)\) complexity, and the more computational efficient approach is to use a combination of Dijkstra’s algorithm, Bellman-Ford algorithm, and Johnson’s algorithm, which chould decrease the complexity to \(O(N^2logN)\). I implement the latter one for more interesting and challenging. There are several obstacles make the implementation a little bit trickier than I thought.</p>
+
+<p>I have tried two or three different versions of Dijkstra’s algorithm while solving other math puzzles, and this time I use the built-in heapq function in Python. Keeping the “about-to explore” nodes in order and extracting the smallest/largest cost one in every iteration are the essense of this algorithm. But the cost to every node has to be updated when a node moves from “about-to explore” to “fully explored” category. At first, I just remove the original value and push the updated one into the heap. Because the heapq has no updated or remove methods, I can only use the remove mehtod of the list. This works fine for small amount of nodes (200) but the heap cannot keep right struture when the data becomes just a little bigger (500). Then I have to <em>heapify</em> it every time I update a “about-to explore” node.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dijkstras</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="c1"># keep a record of the distance of the nodes from the start vertex
+</span>    <span class="n">distance</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">()</span>
+    <span class="c1"># keep track of the candidates for the next move
+</span>    <span class="n">index</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">()</span>
+    <span class="c1"># store the cost and node into heap using cost as the key
+</span>    <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heapq</span><span class="p">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+    <span class="c1">#will be used to trace the path of the sjortest distance to each node
+</span>    <span class="n">distance</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">graph</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">])</span><span class="o">==</span><span class="nb">dict</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">].</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">heap_update</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">distance</span>
+    <span class="c1">#initially all nodes are yet to be explored
+</span>    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># need to extract the node with the minimum path
+</span>        <span class="n">node</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">heap_pop</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+        <span class="c1"># store the node into known graph
+</span>        <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+        <span class="c1"># update the knowledge according to existing node
+</span>        <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">])</span><span class="o">==</span><span class="nb">dict</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">localcost</span><span class="p">)</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">].</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">distance</span><span class="p">:</span>
+                    <span class="n">heap_update</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">localcost</span><span class="o">+</span><span class="n">cost</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distance</span></code></pre></figure>
+
+<p>The Bellman-Ford algorithm is more expensive compared with Dijkstra’s algirhtm if the graph is densily connected, but it deals with negative edge cost. This is also the one that helps me fully appreciate the dynamic programming.The implementation is intuitive and straightforward. For every vertex, the brutal force search performs to find the current optimal solution based on the previous knowledge. The optimization for space complexity is to only store the most recent result–keep an 2*N array and use a pointer filp-flop in every iteration is more effecient than keeping two 1*N array, discarding the older one and reclaiming a new one in every iteration. Aother optimization I make is to store the “about-to explore” nodes in a bucket, just as what Dijkstra’s does, which eliminates plenty of unnecessary calculation. But its tricky aspect is that because this algorithm is computing “distributed”, different from the “centralized” spanning of Dijkstra’s, if several “exploring” vertices point to a same “about-to explore” vertex, only the optimal cost should be kept.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">bellman_ford</span> <span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="s">""" The input arr stores all info of the graph in a dictionary.
+        The basic element in the arr are three-columns data -- 
+        [start_point, end_point, cost]"""</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c1"># initialization
+</span>    <span class="n">data</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s">"inf"</span><span class="p">))</span>
+    <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">bucket</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+        <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">start</span><span class="p">:</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">][</span><span class="n">i</span><span class="p">]}</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="c1"># use set() to make sure start points in the next round are unique
+</span>        <span class="n">candidate</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="n">count</span> <span class="o">^</span> <span class="mi">1</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">,</span> <span class="n">v</span><span class="p">],</span> \
+		<span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">,</span> <span class="n">bucket</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span> \
+	        <span class="o">+</span><span class="n">bucket</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">candidate</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="c1"># stop early if there is no place to span
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">==</span><span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">]).</span><span class="nb">all</span><span class="p">():</span>
+            <span class="k">break</span>
+        <span class="c1"># update the bucket
+</span>        <span class="n">bucket</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">bucket</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> \
+		      <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">bucket</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> \
+		      <span class="n">bucket</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+                    <span class="n">bucket</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">bucket</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bucket</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">previous</span>
+    
+    <span class="c1"># check cycle with negative sum
+</span>    <span class="n">previous</span> <span class="o">=</span> <span class="n">count</span> <span class="o">^</span> <span class="mi">1</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">,</span><span class="n">v</span><span class="p">],</span> \
+		<span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">,</span> <span class="n">bucket</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="n">bucket</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="n">previous</span><span class="p">]).</span><span class="nb">all</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s">"inf"</span><span class="p">)</span></code></pre></figure>
+
+<p>Finally, the two algorithms above are connected by the Johnson’s algorithm. Dijkstra’s algorithm cannot deal with negative edge costs, but much more fast than Bellman-Ford especially in the case of “all-pairs”. Furthermore, the negative costs cannot be got rid of by adding uniformly for every edge. Johnson’s algorithm neatly solves it by adding pseudo-node to find weights of vertices and changing values of edges concerning their connected vertices. There is no hidden obstacle in the implementation. Only the special care should be taken for manipulating the nodes. It reminds me coding in C…</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">johonsons</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vertex</span><span class="p">):</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># make psedu node pointing to all other nodes with zero cost
+</span>    <span class="n">plus1</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">d1</span><span class="p">[</span><span class="n">plus1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">plus1</span><span class="p">):</span>
+        <span class="n">d1</span><span class="p">[</span><span class="n">plus1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># calculate the reweight vector
+</span>    <span class="n">reweight</span> <span class="o">=</span> <span class="n">bellman_ford</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">plus1</span><span class="p">,</span> <span class="n">plus1</span><span class="p">)</span>
+    <span class="c1"># reweight all cost to make it nonnegative
+</span>    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">reweight</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="c1"># stop if there is any negative cycle in the graph
+</span>        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">reweight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">reweight</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">reconvert</span><span class="p">(</span><span class="n">reweight</span><span class="p">,</span><span class="n">vertex</span><span class="p">,</span><span class="n">dijkstras</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">i</span><span class="p">))</span>\
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">vertex</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span></code></pre></figure>
+
+<p>The overall algorithm solves the question and runs kind of standard. Still, I do not satisfy with the update procedure of heap. I will write a new version of this data structure in the near future and see if it can provide significant boost for the performance.</p>
+
+<p>p.s. The vistualization of code block is optimized from the original Octopress style to Github-style based on the <a href="http://blog.codebykat.com/2013/05/23/gorgeous-octopress-codeblocks-with-coderay/">tutorial</a>.<br />
+p.p.s. The inline latex-style formula comes with Kramdown, MathJax and <a href="http://yoyzhou.github.io/blog/2012/08/05/add-latex-support-for-octopress/">this tutorial</a>. Besides, there is <a href="http://brianbuccola.github.io/blog/2012-11-28-latex-math-in-octopress.html">another minor bug to deal with</a>.</p>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

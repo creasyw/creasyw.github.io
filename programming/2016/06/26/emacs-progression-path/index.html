@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Emacs Progression Path &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The progression path of learning to enjoy the Emacs envrionment by a Vim user">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2016/06/26/emacs-progression-path/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Emacs Progression Path">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2016/06/26/emacs-progression-path/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="Emacs Progression Path" />
+    <meta name="twitter:description" content="The progression path of learning to enjoy the Emacs envrionment by a Vim user" />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2016/06/26/emacs-progression-path/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Emacs Progression Path</h1>
+  <span class="post-meta">Jun 26, 2016</span><br>
+  
+  <span class="post-meta small">
+  
+    8 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>[<em>Update</em>] This post was originally wrote two years ago. Since then, I have
+gradually moved most of my <em>personal</em> developing environment from Vim
+to Emacs. It is the time to rewrite part of it and add the updates.</p>
+
+<p>I was hoping to find something like <a href="http://stackoverflow.com/questions/2573135/python-progression-path-from-apprentice-to-guru">Python Progression Path</a> or sort of “best practice” for Emacs, because the difference between Vim and Emacs was much larger than I thought. But what I found were either teaching about basic operations such as saving and quiting the editor for people who had access to comupter for the 1st time, or talking about tricks of using Emacs Lisp for the high-end hard-core players… It seemed like I was stuck in the middle, and would stay there for a very long time…</p>
+
+<p>I will sort the contents here as incremental records simulating my Emacs learning process, as well as keeping track of nontrivial materials and thoughts.</p>
+
+<h3 id="mindset-and-starting-point">Mindset and Starting Point</h3>
+
+<ul>
+  <li>Don’t panic – <em>The Hitchhiker’s Guide to the Galaxy</em> – “it looked insanely complicated , and this was one of the reasons… the other reason was that this device was in fact that most remarkable of all…”</li>
+  <li>To customized the emacs, the starting point is the file <code class="language-plaintext highlighter-rouge">~/.emacs.d/init.el</code></li>
+  <li>One basic
+<a href="http://refcards.com/docs/gildeas/gnu-emacs/emacs-refcard-a4.pdf">cheat sheet</a>
+comes in handy. Most of the common keybindings can be easily referred.</li>
+  <li>It’s also much easier to start with a package containing all basic
+modules. There are several options, which are listed in the
+following section.</li>
+  <li>To install new package, the easiest way is <code class="language-plaintext highlighter-rouge">M-x package-install</code>,
+and the following operations are similar to surfing the website via
+<code class="language-plaintext highlighter-rouge">lynx</code>. It is even easier to update all installed package: <code class="language-plaintext highlighter-rouge">M-x
+list-packages</code>, <code class="language-plaintext highlighter-rouge">U</code> (Mark all package with a newer available
+version), and <code class="language-plaintext highlighter-rouge">x</code> (Download and install all marked packages). More
+info refers to the
+<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Package-Menu.html">Package Menu Buffer</a>.</li>
+  <li>Though I don’t agree with many opinions that
+<a href="https://en.wikipedia.org/wiki/Steve_Yegge">Steve Yegge</a> have said,
+but his claim about Emacs is somewhat correct – “Real engineers use
+Emacs. You have to be way smart to use it well, and it makes you
+incredibly powerful if you can master it” – the emacs is highly
+configurable and can be very powerful, but the user has to be
+smart simply because the system is so twisted…</li>
+  <li>It’s helpful to know some LISP, for both using Emacs and becoming a
+better programmer.</li>
+  <li>An off-topic thought. I also agree
+with Steve’s view about
+<a href="https://sites.google.com/site/steveyegge2/tour-de-babel">languages</a>,
+especially – “C++ is dumb, and you can’t write smart systems in a
+dumb language. Languages shape the world. Dumb languages make for
+dumb worlds.”  =P</li>
+</ul>
+
+<h3 id="packages">Packages</h3>
+
+<ul>
+  <li><a href="http://batsov.com/prelude/">Prelude</a> – very easy to setup, and
+add/disable modules and/or modes, which are defined at
+<a href="https://github.com/creasyw/dot_file/blob/master/init.el">init.el</a>
+and <a href="https://github.com/creasyw/dot_file/blob/master/prelude-modules.el">prelude-modules.el</a>.</li>
+  <li><a href="https://github.com/xiaohanyu/oh-my-emacs">Oh-my-emacs</a> is an
+alternative, but I met quite a few
+incompatible issues for the OSX. <a href="https://github.com/eschulte/emacs24-starter-kit">Emacs24 Starter Kit</a>
+is also well-known but not actively developed recently.</li>
+  <li>Emacs is able to do <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">spelling check</a> natively, or with more advanced <a href="https://www.emacswiki.org/emacs/FlySpell">Fly Spell</a>.</li>
+  <li><a href="https://www.emacswiki.org/emacs/Evil">Evil</a>, the Vim mode. This makes my live much easier, maybe just because it provides a decent editor inside of
+the emacs OS =P. And, there is a trick to
+<a href="http://stackoverflow.com/questions/3960034/pasting-text-into-emacs-on-macintosh">copy and paste large chunks of text in OSX</a>.</li>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eww.html">EWW</a>:
+the web browser within emacs.</li>
+  <li><a href="https://github.com/magit/magit">Magit</a>. “Magit is the most popular interface to git. If you are new to git and do not need support for other vcs this is likely the package you should try first” – quoted from <a href="http://www.emacswiki.org/emacs/Git">EmacsWiki</a>. The detail explanation can be found from <a href="http://www.masteringemacs.org/articles/2013/12/06/introduction-magit-emacs-mode-git/">Mastering Emacs</a>.</li>
+  <li>Auto-completion is <code class="language-plaintext highlighter-rouge">M-/</code>, or
+<a href="http://company-mode.github.io/">Company</a> for fancier scenarios.</li>
+  <li><a href="http://www.emacswiki.org/emacs/HighlightSymbol">HighlightSymbol</a>
+  with self-explanatory name, but does not work well within
+  Prelude.</li>
+  <li><a href="http://haskell.github.io/haskell-mode/">Haskell mode</a>.</li>
+  <li><a href="http://jblevins.org/projects/markdown-mode/">Markdown mode</a>.</li>
+  <li><a href="http://www.nongnu.org/geiser/geiser_3.html">Geisier</a> is able to integrate with Racket REPL, and use together with <a href="http://www.neilvandyke.org/quack/">Quack</a>.</li>
+  <li>Alternatively, there is a <a href="https://github.com/greghendershott/racket-mode">Racket mode</a>.</li>
+</ul>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>These two great post are the starting point to enter the
+world of Emacs <a href="http://sachachua.com/blog/2013/05/how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners/">1</a>, <a href="http://sachachua.com/p/26006">2</a>.</li>
+  <li>To switch between different modes, it might be helpful to open quite a few cheat
+sheets at the same time…
+    <ul>
+      <li>Emacs: (<a href="http://refcards.com/docs/gildeas/gnu-emacs/emacs-refcard-a4.pdf">compact version</a>, and <a href="http://cs.iupui.edu/~kweimer/EmacsCheatSheet.pdf">a more user friendly verion</a>).</li>
+      <li><a href="http://g-design.net/textmate.pdf">Prelude</a></li>
+      <li><a href="https://magit.vc/manual/magit-refcard.pdf">Magit</a></li>
+      <li><a href="http://www.nongnu.org/geiser/geiser_5.html">Geiser</a></li>
+    </ul>
+  </li>
+  <li>GNU <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html">Emacs Manual</a> and <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs LISP Manual</a></li>
+  <li><a href="http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">Guidelines</a> for package management in Emacs.</li>
+  <li><a href="http://www.emacswiki.org/emacs/">Emacs Wiki</a></li>
+  <li><a href="http://www.masteringemacs.org/">Mastering Emacs</a></li>
+  <li><a href="http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/">From Vim to Emacs+Evil chaotic migration guide</a></li>
+  <li>Steve Yegge’s suggestion for <a href="https://sites.google.com/site/steveyegge2/effective-emacs">improving productivity with Emacs</a></li>
+  <li>My previous <a href="http://wqiong.com/blog/2013/07/01/setup-emacs-in-mac-os/">post</a> to setup Emacs in Mac OS.</li>
+  <li><a href="https://piotrkazmierczak.com/2010/emacs-as-the-ultimate-latex-editor/">How to turn Emacs to the ultimate Latex Editor</a></li>
+</ul>
+
+<h3 id="misc">Misc</h3>
+
+<p>The difference between “killing” and “deleting” is that “killed” text can be reinserted (at any position), whereas “deleted” things cannot be reinserted in this way (you can, however, undo a deletion–see below).  Reinsertion of killed text is called “yanking”.  Generally, the commands that can remove a lot of text kill the text (they are set up so that you can yank the text), while the commands that remove just one character, or only remove blank lines and spaces, do deletion (so you cannot yank that text).  &lt;DEL&gt; and C-d do deletion in the simplest case, with no argument.  When given an argument, they kill instead.
+– This is valid for both vim and emacs.</p>
+
+<ul>
+  <li>Multiple windows:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">C-x 0</code>  delete this window</li>
+      <li><code class="language-plaintext highlighter-rouge">C-x 1</code>  delete all other windows</li>
+      <li><code class="language-plaintext highlighter-rouge">C-x 2</code>  vertically split window</li>
+      <li><code class="language-plaintext highlighter-rouge">C-x 3</code>  split window side by side</li>
+    </ul>
+  </li>
+  <li>Scoll down the page
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">C-v</code>: page down</li>
+      <li><code class="language-plaintext highlighter-rouge">C-u 8 C-v</code>: scoll down 8 lines</li>
+      <li><code class="language-plaintext highlighter-rouge">C-l</code>: move the current line to the middle of the window</li>
+      <li><code class="language-plaintext highlighter-rouge">C-u 0 C-l</code>: move the current line to the head of the window</li>
+    </ul>
+  </li>
+  <li>Getting help
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">C-h c \&lt;Command sequence\&gt;</code>:   a very brief description of the command.</li>
+      <li><code class="language-plaintext highlighter-rouge">C-h k \&lt;Command sequence\&gt;</code>   displays the documentation of the function, as well as its name</li>
+      <li><code class="language-plaintext highlighter-rouge">C-h t</code> evoke the tutorial of Emacs within the editor.</li>
+      <li><code class="language-plaintext highlighter-rouge">C-h a topics RET</code> searches for commands whose names match the
+  argument topics. The argument can be a keyword, a list of keywords,
+  or a regular expression.
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">C-h i d m emacs RET i topic RET</code> searches for topic in the
+  indices of the Emacs Info manual</li>
+          <li><code class="language-plaintext highlighter-rouge">C-h i d m emacs RET s topic RET</code> searches the text of the
+  manual.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Shell History (also Useful for Haskell REPL)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">M-p (or) C-\&lt;UP\&gt;</code>: Fetch the next earlier old shell command.</li>
+      <li><code class="language-plaintext highlighter-rouge">M-n (or) C-\&lt;DOWN\&gt;</code>: Fetch the next later old shell command.</li>
+      <li><code class="language-plaintext highlighter-rouge">M-r</code>: Begin an incremental regexp search of old shell commands.</li>
+      <li><code class="language-plaintext highlighter-rouge">C-c C-x</code>: Fetch the next subsequent command from the history.</li>
+      <li><code class="language-plaintext highlighter-rouge">C-c .</code>: Fetch one argument from an old shell command.</li>
+      <li><code class="language-plaintext highlighter-rouge">C-c C-l</code>: Display the buffer’s history of shell commands in another window (comint-dynamic-list-input-ring).</li>
+    </ul>
+  </li>
+</ul>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

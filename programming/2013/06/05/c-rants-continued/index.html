@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>C++ rants (continued) &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2013/06/05/c-rants-continued/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="C++ rants (continued)">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2013/06/05/c-rants-continued/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="C++ rants (continued)" />
+    <meta name="twitter:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player." />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2013/06/05/c-rants-continued/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>C++ rants (continued)</h1>
+  <span class="post-meta">Jun 5, 2013</span><br>
+  
+  <span class="post-meta small">
+  
+    6 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>(<a href="http://www.realworldtech.com/forum/?threadid=104299&amp;curpostid=104196">link</a>)</p>
+
+<p>&gt;Care to write an explicit example of a deep problem? (Except memory management - you already mentioned garbage collection.)</p>
+
+<p>Concurrency, for example.</p>
+
+<p>My point being, that C++ adds absolutely nothing interesting.</p>
+
+<p>&gt;All right. Then why do you think C should have support for structures (struct {…})?</p>
+
+<p>That’s just singularly stupid.</p>
+
+<p>C is a good language. It’s complete enough (and yes, the ability to handle structured data is very much required for any serious language) to be supremely useful, while at the same time being quite simple.</p>
+
+<p>A language without structured data types would not be a powerful language the way C is. You do need data structures, and you need pointers (to both data and code) to be at all interesting.</p>
+
+<p>But where do you draw the line?</p>
+
+<p>I know that you as a C++ proponent you probably won’t really “get” this simple argument, but try:</p>
+
+<ul>
+  <li>read the K&amp;R book on C (the ANSI edition), and be enlightened.</li>
+</ul>
+
+<p>Notice how the language is basically described by one rather thin book. Readably.</p>
+
+<p>So what C does so well is to do that whole “make it as simple as you can, but no simpler”. And that is what makes it great. The language is powerful, yet fairly minimal.</p>
+
+<p>There really aren’t many features you could remove from the C language without crippling it. Sure, there’s
+three different looping constructs, and you could make trivial (syntactic) changes to the language, but that’s
+really not the point. The language is simple, but without being too simple.</p>
+
+<p>Now, that’s not what you always want. I understand very well why people want less system-oriented languages with more built-in functionality. As mentioned, support for both garbage collection and concurrency are quite real problems, and they are both things you can do in C, but that you cannot do well with library interfaces, which is how you normally would extend on C.</p>
+
+<p>And garbage collection and concurrency are way more than just syntactic extensions. You can still do them very badly, of course, so it’s not a trivial path to go down, and I’m not saying hat a language magically becomes “good” just from supporting one or the other.</p>
+
+<p>But again: C does what it does very well, and with a clarity of thought and design that is entirely and utterly lacking from C++.</p>
+
+<p>And yes, I happen to think that clarity of thought and design is a good thing. It’s why I liked UNIX, even though I was initially introduced to other things (VMS - ugh).</p>
+
+<p>C++ is a mess. There’s no design. It’s just “add crud on top of C”. And the crud isn’t even meaningful, much less does it have a design. It’s totally and utterly random.</p>
+
+<p>It started out random, now it’s randomness that gets added to by a committee.</p>
+
+<p>&gt;For example, namespaces and function overloading are <em>not</em>
+&gt;useless. They <em>do</em> solve a real problem that C is incapable
+&gt;of solving.</p>
+
+<p>You’re full of it.</p>
+
+<p>&gt;For example, if you want in your source code to define a
+&gt;function called “connect” and you also want include
+&gt;“sys/socket.h”, you cannot do that in C.</p>
+
+<p>So to prove how it’s not just a syntactic feature, you start talking about syntax?</p>
+
+<p>What drugs are you on?</p>
+
+<p>The name overloading is a total syntactic feature. In C, the way you fix your problem is by a totally trivial syntactic change: you call your function “my_connect()”.</p>
+
+<p>Wow. It’s like magic. I added three characters, and made your whole reason for the crap that is C++ go away.</p>
+
+<p>The thing is, the above is a really good example of why C++ is horrible, and why C is so simple.</p>
+
+<p>Yes, the C solution is really simple. It’s so simple that it looks downright stupid. But it’s actually so simple that it is smart because quite frankly, it’s a lot easier to get confused in C++ code, when the same function name means totally different due to overloading.</p>
+
+<p>Of course, you’re not “supposed” to overload things in confusing ways, but the thing is, just do what C does: just make your function names unique. It’s not that hard, and by avoiding the overloading mess, you make it a lot easier to search for (hey look! “grep -w my_connect” just works!), and you avoid ambiguity.</p>
+
+<p>(Same exact thing goes for your other example: just add a module prefix or have some other trivial naming rules for your functional split-up, and be happy)</p>
+
+<p>Linus</p>
+<div>
+
+</div>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

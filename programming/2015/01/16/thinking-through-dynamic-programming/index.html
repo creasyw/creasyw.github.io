@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Thinking Through Dynamic Programming &#8211; Qiong Wu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta name="author" content="Qiong Wu">
+    <meta name="keywords" content="Programming">
+    <link rel="canonical" href="http://localhost:4000/programming/2015/01/16/thinking-through-dynamic-programming/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Qiong Wu" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?202306252228" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Thinking Through Dynamic Programming">
+    <meta property="og:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player.">
+    <meta property="og:url" content="http://localhost:4000/programming/2015/01/16/thinking-through-dynamic-programming/">
+    <meta property="og:site_name" content="Qiong Wu">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@creasywuqiong" />
+    
+    <meta name="twitter:title" content="Thinking Through Dynamic Programming" />
+    <meta name="twitter:description" content="The personal website of Qiong Wu. He is a programmer, hacker, algorist, and tennis player." />
+    <meta name="twitter:url" content="http://localhost:4000/programming/2015/01/16/thinking-through-dynamic-programming/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+
+    
+</head>
+
+<body class="site">
+
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Qiong Wu</a>
+      <nav class="site-nav">
+        <a href="/about/">About</a>
+<a href="/archive/">Archive</a>
+<a href="/contact/">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Thinking Through Dynamic Programming</h1>
+  <span class="post-meta">Jan 16, 2015</span><br>
+  
+  <span class="post-meta small">
+  
+    6 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>What is the similarity between generating Fibonacci number and calculating the minimum editing distance of two strings?</p>
+
+<p>Both of them can be solved by using <a href="http://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a>, although 1) there is a <a href="https://gist.github.com/creasyw/9c79383a5a55439a27a5#file-fibonacci-py-L29">relatively better way</a> to generate the Fibonacci number, and 2) when we are talking about dynamic programming the implementations of the previous two questions have more differences than similarities. The former one use only two temporary variables for intermediate results, while the latter takes advantage of a 2D matrix as register to remember all results of the sub-problems.</p>
+
+<p>But they do have the same train of thought if we start solving from the recursive solutions. And more importantly, this similar thought could resolve two obstacles for implementing the dynamic programming: what is the structure of the DP register (1D or 2D list), and what are the edge cases.</p>
+
+<p>Take Fibonacci number as example. We have to know the number with index N-1 and N-2 so that we can derive the number of index N. The recursive solution is</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fib</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="mi">1</span></code></pre></figure>
+
+<p>That is, for every problem, there should be two sub-problems solved before tackling it. Furthermore, the edge cases are with index 0 and 1. So, the dynamic programming version of the solution becomes:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">__</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">a</span></code></pre></figure>
+
+<p>On the other hand, the minimum distance between two strings are just “slightly” difficult. It has four cases for two given indices of the two strings: the characters are the same, so the distance is 0; one of the character needs to be deleted; one of the indices needs to insert a new character; both characters need to be replaced. The last three cases will have distance 1. Although it is a little bit obscure coming up with the 2D matrix DP solution, it is easy to write the recursive version:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">minDistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pt1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pt2</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">pt2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pt1</span><span class="o">+</span><span class="mi">1</span>
+            <span class="c1"># the two characters are matched
+</span>            <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">pt1</span><span class="p">]</span> <span class="o">==</span> <span class="n">word2</span><span class="p">[</span><span class="n">pt2</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="n">pt1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pt2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># pt1 needs del, pt2 needs del, or pt1 and pt2 needs replaced
+</span>                <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">helper</span><span class="p">(</span><span class="n">pt1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">),</span> <span class="n">helper</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> \
+                        <span class="n">helper</span><span class="p">(</span><span class="n">pt1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pt2</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></code></pre></figure>
+
+<p>The local helper functions do all of the dirty work of recursively finding the minimum distance of the two substring. The termination criteria are actually the edge cases we need to construct the starting point of the dynamic programming.</p>
+
+<p>If the entire first string matches the part of the second string from pointer pt2 to the end, the remaining distance is the value of pt2. The range of the pt2 is from zero to the length of the second string. As a result, it needs a 2D matrix to record all of the intermediate results, going through both the first and the second string, and the edge cases of pt1 and pt2 are analyzed above. We will have something like</p>
+
+<p><img src="/images/dp_table.png" alt="Example Table" style="width: 500px;" /></p>
+
+<p>Then, according to the recursive solution, if the two characters are different, the slot in the table is determined by three slots (plus one): its left neighbor, the slot under it, and the slot in the left under diagonal direction. If they are the same, then it is equal to the value in the left-under diagonal slot.</p>
+
+<p>Till this step, the dp solution is complete and functioned. But further improvement can be made in the space complexity. Because each slot only needs three neighbors to make the decision, we can either go by row or go by column. Suppose the two input strings have length M and N. The final version has time complexity of O(MN) and space of O(min(M,N)).</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">minDistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">))</span>
+        <span class="n">memory</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)):</span>
+            <span class="n">register</span> <span class="o">=</span> <span class="p">[</span><span class="n">i2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span> <span class="o">==</span> <span class="n">word2</span><span class="p">[</span><span class="n">i2</span><span class="p">]:</span>
+                    <span class="n">register</span><span class="p">[</span><span class="n">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">register</span><span class="p">[</span><span class="n">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">register</span><span class="p">[</span><span class="n">i1</span><span class="p">],</span> <span class="n">memory</span><span class="p">[</span><span class="n">i1</span><span class="p">],</span><span class="n">memory</span><span class="p">[</span><span class="n">i1</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span>
+            <span class="n">memory</span> <span class="o">=</span> <span class="n">register</span>
+        <span class="k">return</span> <span class="n">register</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+<p>The optimization is quite promising. This solution achieves the best running time among python implementations.</p>
+
+<p><img src="/images/dp_performance.png" alt="Example Table" style="width: 500px;" /></p>
+
+<p>Reference:</p>
+
+<ul>
+  <li><a href="https://web.stanford.edu/class/cs124/lec/med.pdf">Minimum Edit Distance</a></li>
+  <li><a href="http://stackoverflow.com/a/6185005/941508">The difference between memoization and dynamic programming</a></li>
+  <li><a href="http://stackoverflow.com/a/6165124/941508">Dynamic programming and memoization: bottom-up vs top-down approaches</a></li>
+</ul>
+
+<p>Some good Q&amp;A from Quora:</p>
+
+<ul>
+  <li><a href="http://www.quora.com/How-should-I-explain-dynamic-programming-to-a-4-year-old">How should I explain dynamic programming to a 4-year-old?</a></li>
+  <li><a href="http://www.quora.com/What-does-dynamic-programming-tell-you-about-life">What does dynamic programming tell you about life?</a></li>
+  <li><a href="http://www.quora.com/How-can-one-start-solving-Dynamic-Programming-problems">How can one start solving Dynamic Programming problems?</a></li>
+  <li><a href="http://www.quora.com/What-are-systematic-ways-to-prepare-for-dynamic-programming">What are systematic ways to prepare for dynamic programming?</a></li>
+  <li><a href="http://www.quora.com/What-are-the-top-10-most-popular-dynamic-programming-problems-among-interviewers">What are the top 10 most popular dynamic programming problems among interviewers?</a></li>
+  <li><a href="http://www.quora.com/Are-there-any-good-resources-or-tutorials-for-dynamic-programming-besides-the-TopCoder-tutorial">Good resources or tutorials for dynamic programming besides the TopCoder tutorial</a></li>
+</ul>
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      <a href="http://creativecommons.org/licenses/by/4.0/">CC</a> 2009-2023 <a href="/about/">Qiong Wu</a>.<br>
+      Thanks to <a href="https://github.com">Github</a>, <a href="https://jekyllrb.com">Jekyll</a>, and <a href="https://github.com/johnotander/pixyll">Pixyll</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>
